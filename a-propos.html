@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — Mes étonnements</title>
+<meta name="description" content="Qui écrit Mes étonnements, et pourquoi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Source+Serif+4:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">Mes étonnements</a>
+  <nav class="nav">
+    <a href="index.html">Accueil</a>
+    <a href="archives.html">Archives</a>
+    <a href="a-propos.html" aria-current="page">À propos</a>
+  </nav>
+</header>
+
+<section class="hero" style="padding:3rem 1.5rem 2.4rem;">
+  <div class="hero-inner">
+    <p class="eyebrow">À propos</p>
+    <h1 style="font-size:clamp(1.8rem,4vw,2.6rem);">Pourquoi <em>Mes étonnements</em></h1>
+  </div>
+</section>
+
+<section class="section">
+  <p>Je m'appelle Gilles. Consultant-formateur et révélateur d'intelligences collectives, j'ai passé une bonne partie de ma carrière à animer des groupes : ateliers de co-développement, formations en entreprise, Fresques du Climat. Ce que ces années m'ont appris, c'est qu'on avance rarement en confirmant ce qu'on savait déjà — on avance quand quelque chose nous étonne, et qu'on accepte de rester avec cet étonnement plutôt que de l'évacuer.</p>
+
+  <p class="pull">Cette newsletter est née de cette conviction : l'étonnement est une méthode, pas un accident.</p>
+
+  <p>Chaque numéro part d'un fait, d'un chiffre, d'une phrase entendue quelque part qui ne devrait pas surprendre — et qui pourtant dérange, une fois qu'on prend le temps de la regarder en face. J'y traite de climat, de société, de politique, de rapports de pouvoir. Toujours avec des sources vérifiées, rarement avec un ton moralisateur.</p>
+
+  <p>En parallèle, je travaille à un livre, <em>ET… une pensée pour refonder le monde</em>, qui défend une idée simple : la plupart de nos blocages viennent d'une pensée binaire — le réflexe du « ou » — là où le réel demande le plus souvent un « et ». Cette newsletter est un peu le laboratoire à ciel ouvert de ce livre.</p>
+
+  <p class="about-photo-note">Pour me suivre au fil des numéros, ou pour échanger sur l'un d'eux, direction LinkedIn.</p>
+</section>
+
+<footer class="site-footer">
+  <div class="inner">
+    <span>© <span id="year"></span> Gilles — Mes étonnements</span>
+    <a href="archives.html">Archives</a>
+  </div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
