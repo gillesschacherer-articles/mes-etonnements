@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archives, Mes étonnements</title>
+<meta name="description" content="Tous les numéros de la newsletter Mes étonnements, avec recherche et filtres par thème.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Source+Serif+4:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">Mes étonnements</a>
+  <nav class="nav">
+    <a href="index.html">Accueil</a>
+    <a href="archives.html" aria-current="page">Archives</a>
+    <a href="a-propos.html">À propos</a>
+  </nav>
+</header>
+
+<section class="hero" style="padding:3rem 1.5rem 2.4rem;">
+  <div class="hero-inner">
+    <p class="eyebrow">Carnet complet</p>
+    <h1 style="font-size:clamp(1.8rem,4vw,2.6rem);">Tous les numéros</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="tools">
+    <input class="search" id="q" type="search" placeholder="Rechercher un mot, un thème, un numéro…" aria-label="Rechercher dans les numéros">
+    <div class="sort" role="group" aria-label="Ordre d'affichage">
+      <button id="sort-desc" aria-pressed="true">Du plus récent</button>
+      <button id="sort-asc" aria-pressed="false">Du n° 1</button>
+    </div>
+  </div>
+  <div class="filters" id="filters" role="group" aria-label="Filtrer par thème"></div>
+  <p class="count" id="count"></p>
+  <ul class="entry-list" id="all-list"></ul>
+</section>
+
+<footer class="site-footer">
+  <div class="inner">
+    <span>© <span id="year"></span> Gilles Schacherer, Mes étonnements</span>
+    <a href="a-propos.html">À propos</a>
+  </div>
+  <p class="license"><a class="cc" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.fr" target="_blank" rel="noopener"><img src="assets/by-nc-nd.png" alt="Licence Creative Commons BY-NC-ND 4.0" width="88" height="31"></a><br>Sauf mention contraire, les textes sont mis à disposition selon la licence <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.fr" target="_blank" rel="noopener">Creative Commons CC BY-NC-ND 4.0</a> : partage autorisé, à condition de citer l’auteur, sans usage commercial et sans modification.</p>
+</footer>
+
+<script src="assets/entries.js"></script>
+<script src="assets/render.js"></script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const present = [...new Set(ENTRIES.map(e => e.theme))];
+  const themes = ["Tous", ...present.sort((a, b) => {
+    const ia = THEME_ORDER.indexOf(a), ib = THEME_ORDER.indexOf(b);
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+  })];
+
+  let theme = "Tous", order = "desc", query = "";
+  const filtersEl = document.getElementById("filters");
+  const listEl = document.getElementById("all-list");
+  const countEl = document.getElementById("count");
+
+  filtersEl.innerHTML = themes.map((t, i) =>
+    `<button aria-pressed="${i === 0}" data-theme="${t}">${t}</button>`).join("");
+
+  function render() {
+    const q = norm(query.trim());
+    let shown = ENTRIES.filter(e =>
+      (theme === "Tous" || e.theme === theme) &&
+      (!q || norm(`${e.title} ${e.summary} ${e.theme} n ${e.num} ${e.num}`).includes(q)));
+    shown = [...shown].sort((a, b) => order === "desc" ? b.num - a.num : a.num - b.num);
+    countEl.textContent = shown.length === 1 ? "1 numéro" : `${shown.length} numéros`;
+    listEl.innerHTML = shown.map(entryRowHTML).join("") ||
+      `<li style="padding:1.5rem 0; color:var(--ink-soft);">Aucun numéro ne correspond.</li>`;
+  }
+
+  filtersEl.addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    filtersEl.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", "false"));
+    b.setAttribute("aria-pressed", "true"); theme = b.dataset.theme; render();
+  });
+  document.getElementById("q").addEventListener("input", e => { query = e.target.value; render(); });
+  function setSort(o) {
+    order = o;
+    document.getElementById("sort-desc").setAttribute("aria-pressed", o === "desc");
+    document.getElementById("sort-asc").setAttribute("aria-pressed", o === "asc");
+    render();
+  }
+  document.getElementById("sort-desc").addEventListener("click", () => setSort("desc"));
+  document.getElementById("sort-asc").addEventListener("click", () => setSort("asc"));
+  render();
+</script>
+
+</body>
+</html>
