@@ -516,3 +516,22 @@ button:focus-visible {
 .license .cc img { display: block; height: auto; }
 .cc-about { margin-top: 0.4rem; }
 .cc-about img { height: auto; }
+
+/* Page À propos : signature centrée, mention de réutilisation discrète */
+.about .signature {
+  text-align: center;
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 2.6rem 0 2.2rem;
+}
+.about .reuse {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--paper-deep);
+  padding-top: 1.2rem;
+}
+
+.hero .eyebrow { max-width: none; }
+.hero .eyebrow { letter-spacing: 0.07em; font-size: 0.78rem; }

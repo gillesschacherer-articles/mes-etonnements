@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mes étonnements, newsletter de Gilles</title>
-<meta name="description" content="Une newsletter d'analyse sur le climat, la société, la politique et le pouvoir. Archive complète en PDF.">
+<title>Mes étonnements, newsletter de Gilles Schacherer</title>
+<meta name="description" content="Newsletter de Gilles Schacherer : analyses sur la société, le climat et la nature, l'économie et la politique, l'IA et l'entreprise. Tous les numéros en PDF.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Source+Serif+4:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -23,12 +23,12 @@
 
 <section class="hero">
   <div class="hero-inner">
-    <p class="eyebrow">Newsletter : climat, société, politique, pouvoir</p>
-    <h1>Partir de <em>ce qui étonne</em>, pour penser ce qu'on croit déjà savoir.</h1>
-    <p>Chaque numéro part d'un fait, d'un chiffre ou d'une phrase qui ne devrait pas surprendre, et qui pourtant dérange. Analyse, sources vérifiées, sans grand écart moralisateur.</p>
+    <p class="eyebrow">Newsletter : Société · Climat et nature · Économie et politique · IA · Entreprise · Pensées…</p>
+    <h1>Partir de <em>ce qui m’étonne</em>, pour penser au-delà des évidences et des facilités.</h1>
+    <p>Des faits, des chiffres, des phrases ou des simplifications m’étonnent, et me dérangent : ils m’empêchent de penser. Je creuse alors ces questions, pour une approche plus systémique et plus nuancée, loin du prêt‑à‑penser qu’on nous sert trop souvent.</p>
     <div class="hero-actions">
       <a class="btn btn--solid" href="archives.html">Lire les archives</a>
-      <a class="btn" href="https://www.linkedin.com/newsletters/7136412431022477313/" target="_blank" rel="noopener">S'abonner sur LinkedIn</a>
+      <a class="btn" href="https://www.linkedin.com/newsletters/7136412431022477313/" target="_blank" rel="noopener">S’abonner sur LinkedIn</a>
     </div>
   </div>
 </section>
@@ -64,7 +64,7 @@
   document.getElementById("year").textContent = new Date().getFullYear();
   const [latest, ...rest] = ENTRIES;
   document.getElementById("featured-slot").innerHTML = `
-    <span class="date">N° ${latest.num} · ${formatDate(latest.date)} · ${latest.theme}</span>
+    <span class="date">N° ${latest.num} · ${formatDate(latest.date)} · ${themesText(latest)}</span>
     <h3>${latest.title}</h3>
     <p class="summary">${latest.summary}</p>
     <a class="btn btn--solid" href="${latest.pdf}" target="_blank" rel="noopener">Lire le PDF</a>`;

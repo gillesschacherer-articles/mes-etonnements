@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Archives, Mes étonnements</title>
-<meta name="description" content="Tous les numéros de la newsletter Mes étonnements, avec recherche et filtres par thème.">
+<meta name="description" content="Tous les numéros de Mes étonnements, la newsletter de Gilles Schacherer, avec recherche et filtres par thème. À lire en PDF.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Source+Serif+4:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -54,7 +54,7 @@
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  const present = [...new Set(ENTRIES.map(e => e.theme))];
+  const present = [...new Set(ENTRIES.flatMap(e => e.themes))];
   const themes = ["Tous", ...present.sort((a, b) => {
     const ia = THEME_ORDER.indexOf(a), ib = THEME_ORDER.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
@@ -71,8 +71,8 @@
   function render() {
     const q = norm(query.trim());
     let shown = ENTRIES.filter(e =>
-      (theme === "Tous" || e.theme === theme) &&
-      (!q || norm(`${e.title} ${e.summary} ${e.theme} n ${e.num} ${e.num}`).includes(q)));
+      (theme === "Tous" || e.themes.includes(theme)) &&
+      (!q || norm(`${e.title} ${e.summary} ${themesText(e)} n ${e.num}`).includes(q)));
     shown = [...shown].sort((a, b) => order === "desc" ? b.num - a.num : a.num - b.num);
     countEl.textContent = shown.length === 1 ? "1 numéro" : `${shown.length} numéros`;
     listEl.innerHTML = shown.map(entryRowHTML).join("") ||

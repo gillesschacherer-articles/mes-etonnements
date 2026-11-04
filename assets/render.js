@@ -11,6 +11,10 @@ function norm(s) {
   return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
+function themesText(e) {
+  return e.themes.join(" · ");
+}
+
 function entryRowHTML(e) {
   return `
     <li class="entry">
@@ -20,7 +24,7 @@ function entryRowHTML(e) {
       </div>
       <div class="title-block">
         <a class="etitle" href="${e.pdf}" target="_blank" rel="noopener">${e.title}</a>
-        <span class="theme">${e.theme}</span>
+        <span class="theme">${themesText(e)}</span>
         <p class="summary">${e.summary}</p>
       </div>
       <a class="dl" href="${e.pdf}" target="_blank" rel="noopener">PDF ↓</a>
@@ -32,7 +36,7 @@ function cardHTML(e) {
     <article class="card">
       <span class="num">N° ${e.num} · ${formatDate(e.date)}</span>
       <h3><a href="${e.pdf}" target="_blank" rel="noopener">${e.title}</a></h3>
-      <span class="theme">${e.theme}</span>
+      <span class="theme">${themesText(e)}</span>
       <p class="summary">${e.summary}</p>
     </article>`;
 }
