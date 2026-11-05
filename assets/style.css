@@ -600,3 +600,6 @@ body { font-size: 17px; line-height: 1.65; }
 .sort button { background: #e7e7e0; border: 1px solid #b9b9af; color: var(--ink); }
 .sort button:hover { border-color: var(--brick); color: var(--brick); }
 .sort button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+/* Titre d'accueil : tient sur deux lignes avec la police Fraunces */
+.hero h1 { font-size: clamp(2.1rem, 5vw, 2.8rem); }
