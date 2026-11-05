@@ -1,5 +1,5 @@
 /* =========================================================
-   Mes étonnements — feuille de style
+   Mes étonnements : feuille de style
    Palette : encre / papier / rouille (marginalia)
    ========================================================= */
 
@@ -535,3 +535,68 @@ button:focus-visible {
 
 .hero .eyebrow { max-width: none; }
 .hero .eyebrow { letter-spacing: 0.07em; font-size: 0.78rem; }
+
+
+/* =========================================================
+   Retouches (v4) : Inter, nom en haut, sous-titre, filtres, loupe
+   ========================================================= */
+:root { --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+body { font-size: 17px; line-height: 1.65; }
+
+.brand {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--brick);
+}
+.brand:hover { color: var(--brick-soft); }
+
+.hero .eyebrow { letter-spacing: 0.05em; word-spacing: -0.1em; }
+.hero .lede {
+  max-width: 66ch;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+@media (max-width: 640px) {
+  .hero .lede { text-align: left; hyphens: manual; -webkit-hyphens: manual; }
+}
+
+.filters-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  margin: 0 0 0.55rem;
+}
+.filters { margin-bottom: 1.6rem; }
+.filters button {
+  background: #e7e7e0;
+  border: 1px solid #b9b9af;
+  color: var(--ink);
+}
+.filters button:hover { border-color: var(--brick); color: var(--brick); background: #e1e1d9; }
+.filters button[aria-pressed="true"] {
+  background: var(--brick);
+  border-color: var(--brick);
+  color: #fff;
+}
+
+.searchbox { position: relative; flex: 1 1 260px; }
+.searchbox .mag {
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; height: 20px;
+  color: var(--brick);
+  pointer-events: none;
+}
+.searchbox .search { width: 100%; padding-left: 2.7rem; flex: none; }
+
+.sort button { background: #e7e7e0; border: 1px solid #b9b9af; color: var(--ink); }
+.sort button:hover { border-color: var(--brick); color: var(--brick); }
+.sort button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
