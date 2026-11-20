@@ -12,6 +12,15 @@
 
 const ENTRIES = [
   {
+    num: 67,
+    date: "2026-11-10",
+    title: "Le grand remplacement : la banalisation du mal",
+    themes: ["Société", "Économie et politique"],
+    summary: "Ce numéro montre ce que recouvre la banalisation du grand remplacement et de ses déclinaisons : sous leurs habits économiques ou culturels, une théorie raciale héritée des livres d’Hitler. Peut-on vraiment en débattre comme d’une question ordinaire ?",
+    pdf: "pdfs/67-le-grand-remplacement-la-banalisation-du-mal.pdf",
+    debut: true,
+  },
+  {
     num: 66,
     date: "2026-11-03",
     title: "La démocratie confisquée : à trop vouloir l’ordre, on engendre le chaos !",
